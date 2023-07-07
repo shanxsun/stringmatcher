@@ -44,12 +44,12 @@ if sf_data and portal_data:
     portal_data = clean_string(portal_data)
 
     match_score = fuzz.ratio(sf_data, portal_data)
-    if match_score > 90:
-        rating = "🟢"
+    if match_score > 85:
+        rating = "🟢 valid"
     elif match_score > 60:
-        rating = "🟡"
+        rating = "🟡 sense check"
     else:
-        rating = "🔴"
+        rating = "🔴 verify"
 
     message = f"{rating}  The match score is: {match_score:.1f}%"
 else:
