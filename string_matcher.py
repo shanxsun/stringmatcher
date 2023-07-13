@@ -5,6 +5,7 @@ import re
 import pandas as pd
 import streamlit as st
 from rapidfuzz import fuzz
+from unidecode import unidecode
 
 # Dictionary for replacement rules
 replace_dict = {
@@ -21,7 +22,7 @@ replace_dict = {
 
 def clean_string(text):
     if isinstance(text, str):
-        text = text.lower()  # convert to lowercase
+        text = unidecode(text.lower())  # convert to lowercase
         for key, value in replace_dict.items():
             text = text.replace(key, value) # replace based on dictionary
         text = re.sub(r"\W", " ", text)  # remove special characters
